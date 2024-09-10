@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name             = 'DSWaveform'
+  s.name             = 'DSWaveformImage'
   s.version          = '14.2.2' # Set this to the actual version
   s.summary          = 'Generate waveform images from audio files.'
   
@@ -17,16 +17,14 @@ Pod::Spec.new do |s|
   s.osx.deployment_target  = '12.0'
   s.swift_version    = '5.7'  
 
-  s.subspec 'WaveformImage' do |ss|
-    ss.source_files = 'Sources/DSWaveformImage/**/*.{swift}'
-    ss.frameworks    = 'AVFoundation'
-    ss.requires_arc  = true
-  end
-  
+  s.source_files = 'Sources/DSWaveformImage/**/*.{swift}'
+  s.frameworks    = 'AVFoundation'
+  s.requires_arc  = true
+
   # Subspec for DSWaveformImageViews that depends on DSWaveformImage
   s.subspec 'WaveformViews' do |ss|
     ss.source_files = 'Sources/DSWaveformImageViews/**/*.{swift}'
     ss.requires_arc  = true
-    ss.dependency 'DSWaveform/WaveformImage'
+    ss.dependency 'DSWaveformImage'
   end
 end
