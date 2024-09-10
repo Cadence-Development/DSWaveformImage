@@ -16,15 +16,17 @@ Pod::Spec.new do |s|
   s.ios.deployment_target  = '15.0'
   s.osx.deployment_target  = '12.0'
   s.swift_version    = '5.7'  
+  
+  s.default_subspec = 'WaveformImage'
 
-  s.source_files = 'Sources/DSWaveformImage/**/*.{swift}'
-  s.frameworks    = 'AVFoundation'
-  s.requires_arc  = true
+  s.subspec 'WaveformImage' do |ss|
+    ss.source_files = 'Sources/DSWaveformImage/**/*.{swift}'
+    ss.requires_arc  = true
+  end
 
-  # Subspec for DSWaveformImageViews that depends on DSWaveformImage
   s.subspec 'WaveformViews' do |ss|
     ss.source_files = 'Sources/DSWaveformImageViews/**/*.{swift}'
     ss.requires_arc  = true
-    ss.dependency 'DSWaveformImage'
+    ss.dependency 'WaveformImage'
   end
 end
